@@ -1,7 +1,7 @@
 
-# Proximity - Location-Based Social Network
+# RAD.r - Location-Based Social Network
 
-Proximity is a modern social networking application that connects people based on their geographical location, shared interests, and professional goals. The application helps users discover and connect with like-minded individuals in their area.
+RAD.r is a modern social networking application that connects people based on their geographical location, shared interests, and professional goals. The application helps users discover and connect with like-minded individuals in their area.
 
 ## Features
 
