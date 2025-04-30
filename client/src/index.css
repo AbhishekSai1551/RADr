@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Radar pulse animation */
+  .radial-pulse {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0) 0%, rgba(99, 102, 241, 0.3) 70%, rgba(99, 102, 241, 0) 100%);
+    animation: radar-pulse 3s linear infinite;
+  }
+
+  @keyframes radar-pulse {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+  
+  /* Weather effect animations */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  
+  @keyframes rain-drop {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(120%); }
+  }
+  
+  @keyframes spin-very-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  
+  .animate-float-slow {
+    animation: float-slow 20s ease-in-out infinite;
+  }
+  
+  .animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  
+  .animate-rain-drop {
+    animation: rain-drop 1.5s linear infinite;
+  }
+  
+  .animate-spin-very-slow {
+    animation: spin-very-slow 120s linear infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 5s ease-in-out infinite;
+  }
+}

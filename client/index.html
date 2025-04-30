@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RAD.r - Connect with nearby people based on shared interests, professions, or hobbies">
+  <title>RAD.r - Connect Nearby</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyQzIgMTcuNTIgNi40OCAyMiAxMiAyMkMxNy41MiAyMiAyMiAxNy41MiAyMiAxMkMyMiA2LjQ4IDE3LjUyIDIgMTIgMlpNMTYuNSA4LjdDMTcuNSA4LjcgMTguMyA5LjUgMTguMyAxMC41QzE4LjMgMTEuNSAxNy41IDEyLjMgMTYuNSAxMi4zQzE1LjUgMTIuMyAxNC43IDExLjUgMTQuNyAxMC41QzE0LjcgOS41IDE1LjUgOC43IDE2LjUgOC43Wk03LjUgOC43QzguNSA4LjcgOS4zIDkuNSA5LjMgMTAuNUM5LjMgMTEuNSA4LjUgMTIuMyA3LjUgMTIuM0M2LjUgMTIuMyA1LjcgMTEuNSA1LjcgMTAuNUM1LjcgOS41IDYuNSA4LjcgNy41IDguN1pNMTIgMTdDOS45IDE3IDguMSAxNS45IDcuMyAxNC4yQzcuMSAxMy45IDcuMiAxMy40IDcuNSAxMy4yQzcuOCAxMyA4LjMgMTMuMSA4LjUgMTMuNEM5LjEgMTQuNiAxMC41IDE1LjUgMTIgMTUuNUMxMy41IDE1LjUgMTQuOSAxNC42IDE1LjUgMTMuNEMxNS43IDEzLjEgMTYuMiAxMyAxNi41IDEzLjJDMTYuOCAxMy40IDE2LjkgMTMuOSAxNi43IDE0LjJDMTUuOSAxNS45IDE0LjEgMTcgMTIgMTdaIiBmaWxsPSIjNEY0NkU1Ii8+Cjwvc3ZnPgo=" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <script>
+    // Load the Google Maps JavaScript API dynamically
+    function initGoogleMapsScript() {
+      fetch('/api/google-maps-key')
+        .then(response => response.json())
+        .then(data => {
+          if (data.key) {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${data.key}&libraries=places&callback=Function.prototype`;
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+            
+            // Store the API key in window.ENV
+            window.ENV = {
+              GOOGLE_MAPS_API_KEY: data.key
+            };
+          }
+        })
+        .catch(err => {
+          console.error('Failed to load Google Maps API:', err);
+        });
+    }
+    
+    // Call the function when the page loads
+    window.addEventListener('load', initGoogleMapsScript);
+  </script>
+</body>
+</html>

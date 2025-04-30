@@ -1,0 +1,60 @@
+import { motion } from "framer-motion";
+
+export default function AnimatedRat() {
+  return (
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <motion.div
+        className="relative w-32 h-48"
+        animate={{
+          y: [0, -5, 0], // Bobbing effect
+        }}
+        transition={{
+          duration: 1,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        {/* Body */}
+        <motion.div className="absolute w-20 h-40 bg-white rounded-full border border-black left-6" />
+
+        {/* Head */}
+        <motion.div className="absolute w-14 h-14 bg-white rounded-full border border-black left-10 top-0" />
+
+        {/* Eyes */}
+        <motion.div className="absolute w-2 h-2 bg-black rounded-full left-14 top-6" />
+        <motion.div className="absolute w-2 h-2 bg-black rounded-full left-18 top-6" />
+
+        {/* Ears */}
+        <motion.div className="absolute w-4 h-4 bg-white rounded-full border border-black left-10 top-2" />
+        <motion.div className="absolute w-4 h-4 bg-white rounded-full border border-black left-18 top-2" />
+
+        {/* Arms */}
+        <motion.div className="absolute w-6 h-2 bg-white border border-black left-10 top-20 rounded-md rotate-45" />
+
+        {/* Tail - SVG for a curved effect */}
+        <motion.svg
+          className="absolute left-16 top-36"
+          width="50"
+          height="100"
+          viewBox="0 0 50 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1, rotate: [0, 5, -5, 0] }} // Slight swaying motion
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <path
+            d="M10 100 C30 80, 40 50, 30 10"
+            stroke="black"
+            strokeWidth="3"
+            fill="none"
+          />
+        </motion.svg>
+      </motion.div>
+    </div>
+  );
+}
